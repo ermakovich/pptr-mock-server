@@ -1,6 +1,6 @@
 {
   "name": "pptr-mock-server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Tiny library for backendless testing using Puppeteer",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/getdock/pptr-mock-server.git"
   },
-  "keywords": ["automated-tests", "puppeteer"],
+  "keywords": [
+    "automated-tests",
+    "puppeteer"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
