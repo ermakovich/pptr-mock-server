@@ -1,7 +1,9 @@
 # pppt-mock-server
+
 Tiny library for backendless testing using [Puppeteer](https://pptr.dev/).
 
 ### Intro
+
 This library allows to define mock backend responses when testing web app with
 Puppeteer.
 
@@ -17,11 +19,13 @@ Contributions are welcome, so we can make this library more flexible and cover
 more usage scenarios.
 
 ### Installing
+
 ```
 yarn add -D pptr-mock-server
 ```
 
 ### Setting up
+
 ```JavaScript
 import puppeteer from 'puppeteer';
 import mockServer from 'pptr-mock-server';
@@ -36,8 +40,10 @@ this.mockServer = await mockServer.init(page, {
 ```
 
 ### Basic usage
+
 Once you have an instance of `mockServer` you can pass it to your test and add
 expectations for particular api calls.
+
 ```JavaScript
 const responseConfig = {body: {id}};
 this.mockServer.get(account, 200, responseConfig);

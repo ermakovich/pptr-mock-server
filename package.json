@@ -2,8 +2,10 @@
   "name": "pptr-mock-server",
   "version": "0.0.0",
   "description": "Tiny library for backendless testing using Puppeteer",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "babel ./src --out-dir ./dist",
+    "postinstall": "npm run build",
     "test": "node -r babel-register test.js",
     "format": "prettier --write \"**/*.js\"",
     "lint": "eslint ."
@@ -12,10 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/getdock/pptr-mock-server.git"
   },
-  "keywords": [
-    "automated-tests",
-    "puppeteer"
-  ],
+  "keywords": ["automated-tests", "puppeteer"],
   "author": "",
   "license": "MIT",
   "bugs": {
@@ -26,9 +25,11 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
-    "prettier": "1.13.6"
+    "prettier": "1.13.6",
+    "puppeteer": "^1.5.0"
   },
   "peerDependencies": {
     "puppeteer": "^1.5.0"
