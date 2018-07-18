@@ -2,9 +2,7 @@ import puppeteer from 'puppeteer';
 
 import mockServer from '.';
 
-// TODO: add proper unit tests
-
-(async function() {
+test('inits normally with Puppeteer', async () => {
   const browser = await puppeteer.launch({headless: true});
   const page = await browser.newPage();
 
@@ -13,4 +11,4 @@ import mockServer from '.';
   } finally {
     await browser.close();
   }
-})();
+});

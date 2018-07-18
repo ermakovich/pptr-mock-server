@@ -46,7 +46,7 @@ expectations for particular api calls.
 
 ```JavaScript
 const responseConfig = {body: {id}};
-this.mockServer.get(account, 200, responseConfig);
+this.mockServer.get('account', 200, responseConfig);
 ```
 
 When your app performs request to the specified resource, it will respond with

@@ -8,8 +8,8 @@ export default function() {
   ) => {
     const handlers = [];
     await page.setRequestInterception(true);
-    await page.on('request', request => {
-      if (!handleRequest(request, {baseApiUrl, baseAppUrl}, handlers)) {
+    await page.on('request', async request => {
+      if (!(await handleRequest(request, {baseApiUrl, baseAppUrl}, handlers))) {
         const requestUrlStr = request.url();
         if (requestUrlStr.startsWith(baseAppUrl)) {
           request.continue();
