@@ -1,9 +1,9 @@
+[![NPM downloads](https://img.shields.io/npm/dm/pptr-mock-server.svg?style=flat)](https://www.npmjs.com/package/pptr-mock-server)
+[![CircleCI](https://circleci.com/gh/getdock/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/getdock/pptr-mock-server)
+
 # pptr-mock-server
 
 Tiny library for backendless testing using [Puppeteer](https://pptr.dev/).
-
-[![NPM downloads](https://img.shields.io/npm/dm/pptr-mock-server.svg?style=flat)](https://www.npmjs.com/package/pptr-mock-server)
-[![CircleCI](https://circleci.com/gh/getdock/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/getdock/pptr-mock-server)
 
 ### Intro
 
