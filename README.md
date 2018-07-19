@@ -1,5 +1,7 @@
 # pppt-mock-server
 
+[![CircleCI](https://circleci.com/gh/getdock/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/getdock/pptr-mock-server)
+
 Tiny library for backendless testing using [Puppeteer](https://pptr.dev/).
 
 ### Intro
