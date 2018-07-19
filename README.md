@@ -1,5 +1,7 @@
 # pppt-mock-server
 
+[![CircleCI](https://circleci.com/gh/getdock/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/getdock/pptr-mock-server)
+
 Tiny library for backendless testing using [Puppeteer](https://pptr.dev/).
 
 ### Intro
@@ -46,7 +48,7 @@ expectations for particular api calls.
 
 ```JavaScript
 const responseConfig = {body: {id}};
-this.mockServer.get(account, 200, responseConfig);
+this.mockServer.get('account', 200, responseConfig);
 ```
 
 When your app performs request to the specified resource, it will respond with

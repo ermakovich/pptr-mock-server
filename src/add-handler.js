@@ -1,6 +1,6 @@
 import isNumber from 'lodash/fp/isNumber';
 
-export default function(handlers, baseApiUrl, timeScaleFactor) {
+export default function(handlers, baseApiUrl = '', timeScaleFactor = 1) {
   const handler = (method, endpoint, status, options = {}) => {
     if (!endpoint.startsWith('http://') && !endpoint.startsWith('https://')) {
       endpoint = baseApiUrl + endpoint;
