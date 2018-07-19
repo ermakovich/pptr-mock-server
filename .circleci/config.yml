@@ -33,7 +33,13 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
-      - run: yarn test-ci
+      - run:
+          name: "Unit tests"
+          command: yarn test-ci
+
+      - run:
+          name: "Linter"
+          command: yarn lint-ci
+
       - store_test_results:
           path: reports/junit

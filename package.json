@@ -9,7 +9,8 @@
     "test": "jest",
     "test-ci": "jest --ci --runInBand --reporters='jest-junit'",
     "format": "prettier --write \"**/*.js\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint-ci": "eslint . --format junit -o reports/junit/lint-results.xml"
   },
   "repository": {
     "type": "git",
