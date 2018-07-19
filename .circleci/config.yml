@@ -34,4 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test --ci --runInBand
+      - run: yarn test-ci
+      - store_test_results:
+          path: reports/junit

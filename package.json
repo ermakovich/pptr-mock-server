@@ -7,6 +7,7 @@
     "build": "babel ./src --out-dir ./dist",
     "prepublish": "npm run build",
     "test": "jest",
+    "test-ci": "jest --ci --runInBand --reporters='jest-junit'",
     "format": "prettier --write \"**/*.js\"",
     "lint": "eslint ."
   },
@@ -14,10 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/getdock/pptr-mock-server.git"
   },
-  "keywords": [
-    "automated-tests",
-    "puppeteer"
-  ],
+  "keywords": ["automated-tests", "puppeteer"],
   "author": "",
   "license": "MIT",
   "bugs": {
@@ -34,10 +32,14 @@
     "eslint": "^5.1.0",
     "eslint-plugin-jest": "^21.17.0",
     "jest": "^23.4.1",
+    "jest-junit": "^5.1.0",
     "prettier": "1.13.6",
     "puppeteer": ">= 1.5"
   },
   "peerDependencies": {
     "puppeteer": ">= 1.5"
+  },
+  "jest-junit": {
+    "output": "./reports/junit/test-results.xml"
   }
 }
