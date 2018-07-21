@@ -21,6 +21,8 @@ projects, but api surface is minimalistic, so it may not fit your needs.
 Contributions are welcome, so we can make this library more flexible and cover
 more usage scenarios.
 
+Recommended reading: [Automated UI Testing at Dock](https://medium.com/dock/automated-ui-testing-at-dock-d1c8f80eef66).
+
 ### Installing
 
 ```
