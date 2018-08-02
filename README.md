@@ -33,10 +33,11 @@ yarn add -D pptr-mock-server
 import puppeteer from 'puppeteer';
 import mockServer from 'pptr-mock-server';
 
+// typically your global test setup
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
-const baseAppUrl = 'http://localhost:8000';
-this.mockServer = await mockServer.init(page, {
+const baseAppUrl = 'http://localhost';
+this.mockRequest = await mockServer.init(page, {
   baseAppUrl,
   baseApiUrl: baseAppUrl + '/api/'
 });
@@ -44,13 +45,21 @@ this.mockServer = await mockServer.init(page, {
 
 ### Basic usage
 
-Once you have an instance of `mockServer` you can pass it to your test and add
-expectations for particular api calls.
+Once you have an instance of [MockRequest](api.md#mockrequest) you can pass it to your tests for registering mock responses:
 
 ```JavaScript
-const responseConfig = {body: {id}};
-this.mockServer.get('account', 200, responseConfig);
+const responseConfig = {body: {result: 'ok'}};
+this.mockRequest.on('GET', 'http://localhost/api/account', 200, responseConfig);
+```
+
+But since you provided `baseApiUrl` as http://localhost/api, you can use relative endpoint name. Also you can use `.get()` shorthand method instead of `.on()`:
+
+```JavaScript
+const responseConfig = {body: {result: 'ok'}};
+this.mockRequest.get('account', 200, responseConfig);
 ```
 
 When your app performs request to the specified resource, it will respond with
 the mock response provided.
+
+[Full api docs](api.md)
