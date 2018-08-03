@@ -29,8 +29,8 @@ export default function MockRequest(
    * `.post()`, `.put()` and `.delete()` available
    * @method
    * @param {string} method request HTTP method
-   * @param {string} endpoint request endpoint URL for request. If relative URL
-   * is passed, it's considered as a request to api **relative** to baseApiUrl.
+   * @param {string} endpoint request endpoint URL. If relative URL is passed,
+   * it's considered as a request to api **relative** to baseApiUrl.
    * @param {number} status response status code
    * @param {ResponseOptions} response additional response options
    * @return {MockRequest}
