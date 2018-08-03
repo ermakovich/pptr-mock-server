@@ -72,8 +72,8 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 #### Parameters
 
 -   `method` **[string][17]** request HTTP method
--   `endpoint` **[string][17]** request endpoint URL for request. If relative URL
-    is passed, it's considered as a request to api **relative** to baseApiUrl.
+-   `endpoint` **[string][17]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
 -   `status` **[number][18]** response status code
 -   `response` **[ResponseOptions][19]** additional response options
 
