@@ -24,7 +24,9 @@ export default async function handleRequest(
     // `http://foo`.
     const urlMatch =
       handler.endpoint === requestUrlStr || handler.endpoint === requestPath;
-    return urlMatch && lowerCase(request.method()) === handler.method;
+    return (
+      urlMatch && lowerCase(request.method()) === lowerCase(handler.method)
+    );
   })(handlers);
 
   if (handler) {
