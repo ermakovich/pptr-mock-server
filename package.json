@@ -34,6 +34,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
+    "dev-configs": "^1.0.3",
     "documentation": "^8.0.2",
     "eslint": "^5.1.0",
     "eslint-plugin-jest": "^21.17.0",

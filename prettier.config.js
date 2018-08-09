@@ -1,5 +1,1 @@
-module.exports = {
-  singleQuote: true,
-  trailingComma: 'es5',
-  bracketSpacing: false,
-};
+module.exports = require('dev-configs/prettier.config');
