@@ -19,9 +19,7 @@
 
 ### init
 
-Init mock server and set request interception on the page. All requests not
-matching `baseAppUrl` and `baseApiUrl` and not handled using special
-registered handler will be aborted and reported to console.
+Init mock server and set request interception on the page
 
 #### Parameters
 
@@ -58,6 +56,14 @@ Type: [Object][13]
 -   `baseApiUrl` **[string][17]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
+-   `onRequest` **[function][18]** Optional callback to be executed for any
+    unhandled request. By default requests are aborted.
+-   `onAppRequest` **[function][18]** Optional callback to be executed for any
+    unhandled app request, i.e. request matching `baseAppUrl` option. By default
+    requests are continued.
+-   `onApiRequest` **[function][18]** Optional callback to be executed for any
+    unhandled api request, i.e. request matching `baseApiUrl` option. By default
+    requests are responded with `200 OK {}` for convenience.
 
 ## MockRequest
 
@@ -74,8 +80,8 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 -   `method` **[string][17]** request HTTP method
 -   `endpoint` **[string][17]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
--   `status` **[number][18]** response status code
--   `response` **[ResponseOptions][19]** additional response options
+-   `status` **[number][19]** response status code
+-   `response` **[ResponseOptions][20]** additional response options
 
 #### Examples
 
@@ -108,7 +114,7 @@ Type: [Object][13]
 ### Properties
 
 -   `body` **[Object][13]** response body
--   `delay` **[number][18]?** delay response for N milliseconds
+-   `delay` **[number][19]?** delay response for N milliseconds
 -   `abort` **[string][17]?** abort request with supplied error code
 -   `contentType` **[string][17]?** content type. Defaults to
     `application/json`.
@@ -147,6 +153,8 @@ Type: [Object][13]
 
 [17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[19]: #responseoptions
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[20]: #responseoptions

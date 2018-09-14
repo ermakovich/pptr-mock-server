@@ -8,7 +8,7 @@ const {URL} = require('url');
 
 export default async function handleRequest(
   request,
-  {baseApiUrl, baseAppUrl},
+  {baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest},
   handlers
 ) {
   const requestUrlStr = request.url();
@@ -50,19 +50,34 @@ export default async function handleRequest(
         },
       });
     }
-
-    return true;
   } else if (requestUrlStr.startsWith(baseApiUrl)) {
-    console.warn(`Unexpected api call! ${request.method()} ${requestUrlStr}`);
-    request.respond({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({}),
-      headers: {
-        'access-control-allow-origin': baseAppUrl,
-        'access-control-allow-headers': 'Authorization, Content-Type',
-      },
-    });
+    if (onApiRequest) {
+      onApiRequest(request);
+    } else {
+      console.warn(`Unexpected api call! ${request.method()} ${requestUrlStr}`);
+      request.respond({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({}),
+        headers: {
+          'access-control-allow-origin': baseAppUrl,
+          'access-control-allow-headers': 'Authorization, Content-Type',
+        },
+      });
+    }
     return true;
+  } else if (requestUrlStr.startsWith(baseAppUrl)) {
+    if (onAppRequest) {
+      onAppRequest(request);
+    } else {
+      request.continue();
+    }
+  } else {
+    if (onRequest) {
+      onRequest(request);
+    } else {
+      console.log(`${request.method()} ${requestUrlStr} aborted`);
+      request.abort();
+    }
   }
 }
