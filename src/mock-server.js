@@ -56,12 +56,12 @@ export default function MockServer() {
  * @property {string} baseApiUrl Base api url. By default all requests matching
  * base api url are responded with 200 status and empty body, but you will see a
  * warning in output.
- * @property {function} onRequest Optional callback to be executed for any
+ * @property {function(PuppeteerRequest)} onRequest Optional callback to be executed for any
  * unhandled request. By default requests are aborted.
- * @property {function} onAppRequest Optional callback to be executed for any
+ * @property {function(PuppeteerRequest)} onAppRequest Optional callback to be executed for any
  * unhandled app request, i.e. request matching `baseAppUrl` option. By default
  * requests are continued.
- * @property {function} onApiRequest Optional callback to be executed for any
+ * @property {function(PuppeteerRequest)} onApiRequest Optional callback to be executed for any
  * unhandled api request, i.e. request matching `baseApiUrl` option. By default
  * requests are responded with `200 OK {}` for convenience.
  */
