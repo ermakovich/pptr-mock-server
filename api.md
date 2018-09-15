@@ -19,9 +19,7 @@
 
 ### init
 
-Init mock server and set request interception on the page. All requests not
-matching `baseAppUrl` and `baseApiUrl` and not handled using special
-registered handler will be aborted and reported to console.
+Init mock server and set request interception on the page
 
 #### Parameters
 
@@ -58,6 +56,14 @@ Type: [Object][13]
 -   `baseApiUrl` **[string][17]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
+-   `onRequest` **function (PuppeteerRequest)** Optional callback to be executed for any
+    unhandled request. By default requests are aborted.
+-   `onAppRequest` **function (PuppeteerRequest)** Optional callback to be executed for any
+    unhandled app request, i.e. request matching `baseAppUrl` option. By default
+    requests are continued.
+-   `onApiRequest` **function (PuppeteerRequest)** Optional callback to be executed for any
+    unhandled api request, i.e. request matching `baseApiUrl` option. By default
+    requests are responded with `200 OK {}` for convenience.
 
 ## MockRequest
 

@@ -1,5 +1,4 @@
 import handleRequest from './handle-request';
-import sleep from './sleep';
 
 const request = {
   url: jest.fn(),
@@ -15,7 +14,7 @@ const endpoint = baseApiUrl + 'account';
 const config = {baseAppUrl, baseApiUrl};
 
 describe('handle request', () => {
-  test('if there is request URL and method match', async () => {
+  test('if there is request URL and method match', () => {
     const status = 200;
 
     const handlers = [
@@ -30,9 +29,8 @@ describe('handle request', () => {
     request.url.mockReturnValueOnce(endpoint);
     request.method.mockReturnValueOnce('GET');
 
-    const result = await handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers);
 
-    expect(result).toBe(true);
     expect(request.respond).toHaveBeenCalledWith({
       status,
       contentType: 'application/json',
@@ -42,7 +40,7 @@ describe('handle request', () => {
     });
   });
 
-  test('if there is request path and method match', async () => {
+  test('if there is request path and method match', () => {
     const status = 200;
 
     const handlers = [
@@ -57,9 +55,8 @@ describe('handle request', () => {
     request.url.mockReturnValueOnce(endpoint + '?query');
     request.method.mockReturnValueOnce('GET');
 
-    const result = await handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers);
 
-    expect(result).toBe(true);
     expect(request.respond).toHaveBeenCalledWith({
       status,
       contentType: 'application/json',
@@ -69,7 +66,7 @@ describe('handle request', () => {
     });
   });
 
-  test('by aborting it if abort option provided', async () => {
+  test('by aborting it if abort option provided', () => {
     const handlers = [
       {
         method: 'get',
@@ -81,9 +78,8 @@ describe('handle request', () => {
     request.url.mockReturnValueOnce(endpoint);
     request.method.mockReturnValueOnce('GET');
 
-    const result = await handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers);
 
-    expect(result).toBe(true);
     expect(request.abort).toHaveBeenCalled();
   });
 
@@ -100,20 +96,17 @@ describe('handle request', () => {
     request.url.mockReturnValueOnce(endpoint);
     request.method.mockReturnValueOnce('GET');
 
-    const result = await handleRequest(request, config, handlers);
-    await sleep(delay);
+    await handleRequest(request, config, handlers);
 
-    expect(result).toBe(true);
-    expect(request.abort).toHaveBeenCalled();
+    expect(request.respond).toHaveBeenCalled();
   });
 
-  test('if there is no match, but endpoint starts with base api url', async () => {
+  test('if there is no match, but endpoint starts with base api url', () => {
     request.url.mockReturnValueOnce(endpoint);
     request.method.mockReturnValueOnce('GET');
 
-    const result = await handleRequest(request, config);
+    handleRequest(request, config);
 
-    expect(result).toBe(true);
     expect(request.respond).toHaveBeenCalledWith({
       status: 200,
       contentType: 'application/json',
@@ -126,11 +119,11 @@ describe('handle request', () => {
   });
 });
 
-test('do not handle all other requests', async () => {
+test('abort all unhandled requests', () => {
   request.url.mockReturnValueOnce('http://foo');
   request.method.mockReturnValueOnce('GET');
 
-  const result = await handleRequest(request, config);
+  handleRequest(request, config);
 
-  expect(result).toBeUndefined();
+  expect(request.abort).toHaveBeenCalled();
 });

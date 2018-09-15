@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-import mockServer from '.';
+import mockServer from './src/index';
 
 test('inits normally with Puppeteer', async () => {
   const browser = await puppeteer.launch({

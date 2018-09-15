@@ -7,9 +7,7 @@ import MockRequest from './mock-request';
  */
 export default function MockServer() {
   /**
-   * Init mock server and set request interception on the page. All requests not
-   * matching `baseAppUrl` and `baseApiUrl` and not handled using special
-   * registered handler will be aborted and reported to console.
+   * Init mock server and set request interception on the page
    * @param {Object} page Puppeteer's page
    * @param {InitOptions} options init options
    * @return {Promise<MockRequest>}
@@ -28,20 +26,24 @@ export default function MockServer() {
    * // now you can use `this.mockRequest` in your tests
    */
   this.init = async (page, options = {}) => {
-    const {baseApiUrl, baseAppUrl, timeScaleFactor = 1} = options;
+    const {
+      baseApiUrl,
+      baseAppUrl,
+      onRequest,
+      onAppRequest,
+      onApiRequest,
+      timeScaleFactor = 1,
+    } = options;
+
     const handlers = [];
     await page.setRequestInterception(true);
-    await page.on('request', async request => {
-      if (!(await handleRequest(request, {baseApiUrl, baseAppUrl}, handlers))) {
-        const requestUrlStr = request.url();
-        if (requestUrlStr.startsWith(baseAppUrl)) {
-          request.continue();
-        } else {
-          console.log(`${request.method()} ${requestUrlStr} aborted`);
-          request.abort();
-        }
-      }
-    });
+    await page.on('request', request =>
+      handleRequest(
+        request,
+        {baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest},
+        handlers
+      )
+    );
 
     return new MockRequest(handlers, baseApiUrl, timeScaleFactor);
   };
@@ -54,4 +56,12 @@ export default function MockServer() {
  * @property {string} baseApiUrl Base api url. By default all requests matching
  * base api url are responded with 200 status and empty body, but you will see a
  * warning in output.
+ * @property {function(PuppeteerRequest)} onRequest Optional callback to be executed for any
+ * unhandled request. By default requests are aborted.
+ * @property {function(PuppeteerRequest)} onAppRequest Optional callback to be executed for any
+ * unhandled app request, i.e. request matching `baseAppUrl` option. By default
+ * requests are continued.
+ * @property {function(PuppeteerRequest)} onApiRequest Optional callback to be executed for any
+ * unhandled api request, i.e. request matching `baseApiUrl` option. By default
+ * requests are responded with `200 OK {}` for convenience.
  */
