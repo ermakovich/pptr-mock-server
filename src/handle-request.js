@@ -1,10 +1,21 @@
 import isFunction from 'lodash/fp/isFunction';
 import lowerCase from 'lodash/fp/lowerCase';
 import findLast from 'lodash/fp/findLast';
+import chalk from 'chalk';
 
 import sleep from './sleep';
 
 const {URL} = require('url');
+
+const consolePrefix = `[${chalk.blue('pptr-mock-server')}]`;
+
+function formatRequest(request) {
+  return chalk.green(`${request.method()} ${request.url()}`);
+}
+
+function warn(message) {
+  console.warn(`${consolePrefix} [warning] ${message}`);
+}
 
 export default async function handleRequest(
   request,
@@ -54,7 +65,11 @@ export default async function handleRequest(
     if (onApiRequest) {
       onApiRequest(request);
     } else {
-      console.warn(`Unexpected api call! ${request.method()} ${requestUrlStr}`);
+      warn(
+        `Unhandled api request! ${formatRequest(
+          request
+        )}. Responding with 200 OK {}.`
+      );
       request.respond({
         status: 200,
         contentType: 'application/json',
@@ -76,7 +91,7 @@ export default async function handleRequest(
     if (onRequest) {
       onRequest(request);
     } else {
-      console.log(`${request.method()} ${requestUrlStr} aborted`);
+      warn(`Unhandled external request! ${formatRequest(request)}. Aborting.`);
       request.abort();
     }
   }

@@ -26,8 +26,8 @@ describe('handle request', () => {
       },
     ];
 
-    request.url.mockReturnValueOnce(endpoint);
-    request.method.mockReturnValueOnce('GET');
+    request.url.mockReturnValue(endpoint);
+    request.method.mockReturnValue('GET');
 
     handleRequest(request, config, handlers);
 
@@ -52,8 +52,8 @@ describe('handle request', () => {
       },
     ];
 
-    request.url.mockReturnValueOnce(endpoint + '?query');
-    request.method.mockReturnValueOnce('GET');
+    request.url.mockReturnValue(endpoint + '?query');
+    request.method.mockReturnValue('GET');
 
     handleRequest(request, config, handlers);
 
@@ -75,8 +75,8 @@ describe('handle request', () => {
       },
     ];
 
-    request.url.mockReturnValueOnce(endpoint);
-    request.method.mockReturnValueOnce('GET');
+    request.url.mockReturnValue(endpoint);
+    request.method.mockReturnValue('GET');
 
     handleRequest(request, config, handlers);
 
@@ -93,8 +93,8 @@ describe('handle request', () => {
       },
     ];
 
-    request.url.mockReturnValueOnce(endpoint);
-    request.method.mockReturnValueOnce('GET');
+    request.url.mockReturnValue(endpoint);
+    request.method.mockReturnValue('GET');
 
     await handleRequest(request, config, handlers);
 
@@ -102,8 +102,8 @@ describe('handle request', () => {
   });
 
   test('if there is no match, but endpoint starts with base api url', () => {
-    request.url.mockReturnValueOnce(endpoint);
-    request.method.mockReturnValueOnce('GET');
+    request.url.mockReturnValue(endpoint);
+    request.method.mockReturnValue('GET');
 
     handleRequest(request, config);
 
@@ -120,8 +120,8 @@ describe('handle request', () => {
 });
 
 test('abort all unhandled requests', () => {
-  request.url.mockReturnValueOnce('http://foo');
-  request.method.mockReturnValueOnce('GET');
+  request.url.mockReturnValue('http://foo');
+  request.method.mockReturnValue('GET');
 
   handleRequest(request, config);
 

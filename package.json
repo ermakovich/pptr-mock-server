@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/getdock/pptr-mock-server#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
