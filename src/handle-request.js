@@ -62,9 +62,11 @@ export default async function handleRequest(
       });
     }
   } else if (requestUrlStr.startsWith(baseApiUrl)) {
+    let apiRequestHandled;
     if (onApiRequest) {
-      onApiRequest(request);
-    } else {
+      apiRequestHandled = onApiRequest(request);
+    }
+    if (!apiRequestHandled) {
       warn(
         `Unhandled api request! ${formatRequest(
           request
@@ -82,15 +84,19 @@ export default async function handleRequest(
     }
     return true;
   } else if (requestUrlStr.startsWith(baseAppUrl)) {
+    let appRequestHandled;
     if (onAppRequest) {
-      onAppRequest(request);
-    } else {
+      appRequestHandled = onAppRequest(request);
+    }
+    if (!appRequestHandled) {
       request.continue();
     }
   } else {
+    let requestHandled;
     if (onRequest) {
-      onRequest(request);
-    } else {
+      requestHandled = onRequest(request);
+    }
+    if (!requestHandled) {
       warn(`Unhandled external request! ${formatRequest(request)}. Aborting.`);
       request.abort();
     }
