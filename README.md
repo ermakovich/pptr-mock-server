@@ -65,4 +65,16 @@ this.mockRequest.get('account', 200, responseConfig);
 When your app performs request to the specified resource, it will respond with
 the mock response provided.
 
+#### Mocking sequence of identical requests
+
+Once you setup a mock request handler, every matching request will be responded with it. However it's a common scenario when you need to mock a sequence of requests, when over time the same request produces different results. Recommended way to do it is to replace previously registered mock response using new one:
+
+```JavaScript
+const responseConfig = {body: {result: 'ok'}};
+this.mockRequest.get('account', 200, responseConfig); // returns 200 on each request
+// test deleting account logic here
+// after account is deleted we want to return 401 instead of 200
+this.mockRequest.get('account', 401); // replaces existing handler
+```
+
 [Full api docs](api.md)
