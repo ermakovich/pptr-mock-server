@@ -1,6 +1,6 @@
 [![NPM downloads](https://img.shields.io/npm/dm/pptr-mock-server.svg?style=flat)](https://www.npmjs.com/package/pptr-mock-server)
 [![CircleCI](https://circleci.com/gh/getdock/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/getdock/pptr-mock-server)
-[![Coverage Status](https://coveralls.io/repos/github/getdock/pptr-mock-server/badge.svg?branch=coverage-reporting)](https://coveralls.io/github/getdock/pptr-mock-server?branch=coverage-reporting)
+[![Coverage Status](https://coveralls.io/repos/github/getdock/pptr-mock-server/badge.svg)](https://coveralls.io/github/getdock/pptr-mock-server)
 
 # pptr-mock-server
 
