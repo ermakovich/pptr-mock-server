@@ -83,7 +83,10 @@ export default async function handleRequest(
       });
     }
     return true;
-  } else if (requestUrlStr.startsWith(baseAppUrl)) {
+  } else if (
+    requestUrlStr.startsWith(baseAppUrl) ||
+    requestUrlStr.startsWith('data:')
+  ) {
     let appRequestHandled;
     if (onAppRequest) {
       appRequestHandled = onAppRequest(request);

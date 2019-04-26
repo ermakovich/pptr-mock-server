@@ -4,6 +4,7 @@ const request = {
   url: jest.fn(),
   method: jest.fn(),
   respond: jest.fn(),
+  continue: jest.fn(),
   abort: jest.fn(),
 };
 
@@ -101,7 +102,7 @@ describe('handle request', () => {
     expect(request.respond).toHaveBeenCalled();
   });
 
-  test('if there is no match, but endpoint starts with base api url', () => {
+  test('if there is no match, but url starts with base api url', () => {
     request.url.mockReturnValue(endpoint);
     request.method.mockReturnValue('GET');
 
@@ -116,6 +117,24 @@ describe('handle request', () => {
         'access-control-allow-headers': 'Authorization, Content-Type',
       },
     });
+  });
+
+  test('if there is no match, but url starts with base app url', () => {
+    request.url.mockReturnValue(baseAppUrl + 'foo');
+    request.method.mockReturnValue('GET');
+
+    handleRequest(request, config);
+
+    expect(request.continue).toHaveBeenCalled();
+  });
+
+  test('if there is no match, but url is data: url', () => {
+    request.url.mockReturnValue('data:image/png');
+    request.method.mockReturnValue('GET');
+
+    handleRequest(request, config);
+
+    expect(request.continue).toHaveBeenCalled();
   });
 });
 
