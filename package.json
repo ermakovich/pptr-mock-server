@@ -21,8 +21,7 @@
     "automated-tests",
     "puppeteer"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "Sergey Ermakovich",
   "bugs": {
     "url": "https://github.com/ermakovich/pptr-mock-server/issues"
   },
@@ -50,5 +49,6 @@
   },
   "jest-junit": {
     "output": "./reports/junit/test-results.xml"
-  }
+  },
+  "license": "ISC"
 }
