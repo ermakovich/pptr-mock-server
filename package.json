@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getdock/pptr-mock-server.git"
+    "url": "git+https://github.com/ermakovich/pptr-mock-server.git"
   },
   "keywords": [
     "automated-tests",
@@ -24,9 +24,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/getdock/pptr-mock-server/issues"
+    "url": "https://github.com/ermakovich/pptr-mock-server/issues"
   },
-  "homepage": "https://github.com/getdock/pptr-mock-server#readme",
+  "homepage": "https://github.com/ermakovich/pptr-mock-server#readme",
   "dependencies": {
     "chalk": "^2.4.1",
     "lodash": "^4.17.10"
