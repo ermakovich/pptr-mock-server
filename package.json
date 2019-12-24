@@ -37,10 +37,10 @@
     "babel-register": "6.26.0",
     "coveralls": "3.0.9",
     "dev-configs": "1.1.0",
-    "documentation": "8.0.2",
+    "documentation": "12.1.4",
     "eslint": "5.1.0",
     "eslint-plugin-jest": "21.17.0",
-    "jest": "23.4.1",
+    "jest": "24.9.0",
     "jest-junit": "5.1.0",
     "prettier": "1.13.6",
     "puppeteer": "1.6.0"
