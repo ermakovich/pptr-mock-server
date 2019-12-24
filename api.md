@@ -88,21 +88,24 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 
 #### Examples
 
-_Handle request to relative endpoint_
+Handle request to relative endpoint
+
 
 ```javascript
 const responseConfig = {body: {result: 'ok'}};
 mockRequest.on('get', 'account', 200, responseConfig);
 ```
 
-_Using shortcut method and absolute url_
+Using shortcut method and absolute url
+
 
 ```javascript
 const responseConfig = {body: {result: 'not found'}};
 mockRequest.get('https://example.com/test', 404, responseConfig);
 ```
 
-_Simulate request timeout_
+Simulate request timeout
+
 
 ```javascript
 mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
