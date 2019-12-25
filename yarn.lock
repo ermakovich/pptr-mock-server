@@ -2266,10 +2266,10 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-plugin-jest@21.17.0:
-  version "21.17.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.17.0.tgz#fdb00e2f9ff16987d6ebcf2c75c7add105760bbb"
-  integrity sha512-kB0gaMLy4RA1bAltYSnnoW33hzX0bUrALGaIqaLoB41Fif38/uAv6oNUFbrzp7aFrwegxKUgFcE/8Z0DZEa0SQ==
+eslint-plugin-jest@21.27.2:
+  version "21.27.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.27.2.tgz#2a795b7c3b5e707df48a953d651042bd01d7b0a8"
+  integrity sha512-0E4OIgBJVlAmf1KfYFtZ3gYxgUzC5Eb3Jzmrc9ikI1OY+/cM8Kh72Ti7KfpeHNeD3HJNf9SmEfmvQLIz44Hrhw==
 
 eslint-scope@^4.0.3:
   version "4.0.3"
