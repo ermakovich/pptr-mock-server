@@ -38,7 +38,7 @@
     "dev-configs": "1.1.0",
     "documentation": "12.1.4",
     "eslint": "6.8.0",
-    "eslint-plugin-jest": "23.7.0",
+    "eslint-plugin-jest": "23.8.0",
     "jest": "25.1.0",
     "jest-junit": "10.0.0",
     "prettier": "1.19.1",
