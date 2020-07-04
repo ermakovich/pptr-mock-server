@@ -39,7 +39,7 @@
     "documentation": "13.0.1",
     "eslint": "7.3.1",
     "eslint-plugin-jest": "23.17.1",
-    "jest": "26.0.1",
+    "jest": "26.1.0",
     "jest-junit": "11.0.1",
     "prettier": "2.0.5",
     "puppeteer": "4.0.1"
