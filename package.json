@@ -36,7 +36,7 @@
     "@babel/preset-env": "7.10.4",
     "coveralls": "3.1.0",
     "dev-configs": "1.1.0",
-    "documentation": "13.0.1",
+    "documentation": "13.0.2",
     "eslint": "7.3.1",
     "eslint-plugin-jest": "23.17.1",
     "jest": "26.1.0",
