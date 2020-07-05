@@ -1,6 +1,6 @@
 {
   "name": "pptr-mock-server",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Tiny library for backendless testing using Puppeteer",
   "main": "dist/index.js",
   "scripts": {
