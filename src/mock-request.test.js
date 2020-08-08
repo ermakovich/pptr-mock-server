@@ -10,7 +10,7 @@ beforeEach(() => {
 test('support all methods and add handlers to array', () => {
   const mockRequest = new MockRequest(handlers);
   const methods = ['get', 'post', 'put', 'delete'];
-  methods.forEach(method => {
+  methods.forEach((method) => {
     mockRequest[method]('account');
   });
   expect(handlers).toHaveLength(4);

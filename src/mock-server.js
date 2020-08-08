@@ -37,7 +37,7 @@ export default function MockServer() {
 
     const handlers = [];
     await page.setRequestInterception(true);
-    await page.on('request', request =>
+    await page.on('request', (request) =>
       handleRequest(
         request,
         {baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest},

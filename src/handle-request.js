@@ -26,7 +26,7 @@ export default async function handleRequest(
   const requestUrl = new URL(requestUrlStr);
   const requestPath = requestUrl.origin + requestUrl.pathname;
 
-  const handler = findLast(handler => {
+  const handler = findLast((handler) => {
     // checking for both `requestUrlStr` and `requestPath` allows to register
     // both fully-qualified URLs if you need better control, or "short" versions
     // with just path. Example: if you register handler as `http://foo`, it will
