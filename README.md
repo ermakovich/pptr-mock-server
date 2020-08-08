@@ -42,7 +42,7 @@ import mockServer from 'pptr-mock-server';
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 const baseAppUrl = 'http://localhost';
-this.mockRequest = await mockServer.init(page, {
+const mockRequest = await mockServer.init(page, {
   baseAppUrl,
   baseApiUrl: baseAppUrl + '/api/'
 });
@@ -54,14 +54,14 @@ Once you have an instance of [MockRequest](api.md#mockrequest) you can pass it t
 
 ```JavaScript
 const responseConfig = {body: {result: 'ok'}};
-this.mockRequest.on('GET', 'http://localhost/api/account', 200, responseConfig);
+mockRequest.on('GET', 'http://localhost/api/account', 200, responseConfig);
 ```
 
 But since you provided `baseApiUrl` as http://localhost/api, you can use relative endpoint name. Also you can use `.get()` shorthand method instead of `.on()`:
 
 ```JavaScript
 const responseConfig = {body: {result: 'ok'}};
-this.mockRequest.get('account', 200, responseConfig);
+mockRequest.get('account', 200, responseConfig);
 ```
 
 When your app performs request to the specified resource, it will respond with
@@ -73,14 +73,14 @@ Once you setup a mock request handler, every matching request will be responded 
 
 ```JavaScript
 const responseConfig = {body: {result: 'ok'}};
-this.mockRequest.get('account', 200, responseConfig); // returns 200 on each request
+mockRequest.get('account', 200, responseConfig); // returns 200 on each request
 // test deleting account logic here
 // after account is deleted we want to return 401 instead of 200
-this.mockRequest.get('account', 401); // replaces existing handler
+mockRequest.get('account', 401); // replaces existing handler
 ```
 
 [Full api docs](api.md)
 
-
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fermakovich%2Fpptr-mock-server.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fermakovich%2Fpptr-mock-server?ref=badge_large)

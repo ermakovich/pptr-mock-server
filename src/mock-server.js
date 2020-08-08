@@ -19,11 +19,11 @@ export default function MockServer() {
    * const browser = await puppeteer.launch();
    * const page = await browser.newPage();
    * const baseAppUrl = 'http://localhost';
-   * this.mockRequest = await mockServer.init(page, {
+   * const mockRequest = await mockServer.init(page, {
    *   baseAppUrl,
    *   baseApiUrl: baseAppUrl + '/api/'
    * });
-   * // now you can use `this.mockRequest` in your tests
+   * // now you can use `mockRequest` in your tests
    */
   this.init = async (page, options = {}) => {
     const {
