@@ -31,9 +31,9 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.13",
-    "@babel/core": "7.12.13",
-    "@babel/preset-env": "7.12.13",
+    "@babel/cli": "7.12.16",
+    "@babel/core": "7.12.16",
+    "@babel/preset-env": "7.12.16",
     "coveralls": "3.1.0",
     "dev-configs": "1.1.0",
     "documentation": "13.1.1",
