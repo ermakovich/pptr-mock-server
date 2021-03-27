@@ -37,7 +37,7 @@
     "coveralls": "3.1.0",
     "dev-configs": "1.1.0",
     "documentation": "13.2.0",
-    "eslint": "7.22.0",
+    "eslint": "7.23.0",
     "eslint-plugin-jest": "24.3.2",
     "jest": "26.6.3",
     "jest-junit": "12.0.0",
