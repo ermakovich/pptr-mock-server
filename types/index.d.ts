@@ -118,5 +118,5 @@ declare module 'pptr-mock-server' {
      * });
      * // now you can use `this.mockRequest` in your tests
      */
-    export function init(_page: Page, _options: InitOptions): MockRequest;
+    export function init(_page: Page, _options: InitOptions): Promise<MockRequest>;
   }
