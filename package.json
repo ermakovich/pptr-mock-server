@@ -4,7 +4,7 @@
   "description": "Tiny library for backendless testing using Puppeteer",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist --ignore '**/*.test.js'",
+    "build": "babel ./src --out-dir ./dist --ignore '**/*.test.js' && cp ./types/index.d.ts ./dist/",
     "prepublish": "npm run build",
     "test": "jest",
     "test-ci": "jest --coverage --ci --runInBand --reporters=jest-junit --coverageReporters=text-lcov | coveralls",
