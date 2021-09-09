@@ -33,7 +33,7 @@
   "devDependencies": {
     "@babel/cli": "7.15.4",
     "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.4",
+    "@babel/preset-env": "7.15.6",
     "coveralls": "3.1.1",
     "dev-configs": "1.1.0",
     "documentation": "13.2.5",
