@@ -42,7 +42,7 @@
     "jest": "27.4.7",
     "jest-junit": "13.0.0",
     "prettier": "2.5.1",
-    "puppeteer": "13.1.0"
+    "puppeteer": "13.1.1"
   },
   "peerDependencies": {
     "puppeteer": ">= 1.5"
