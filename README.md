@@ -1,7 +1,7 @@
 [![NPM downloads](https://img.shields.io/npm/dm/pptr-mock-server.svg?style=flat)](https://www.npmjs.com/package/pptr-mock-server)
 [![CircleCI](https://circleci.com/gh/ermakovich/pptr-mock-server.svg?style=shield)](https://circleci.com/gh/ermakovich/pptr-mock-server)
 [![Coverage Status](https://coveralls.io/repos/github/ermakovich/pptr-mock-server/badge.svg)](https://coveralls.io/github/ermakovich/pptr-mock-server)
-[![dependencies Status](https://david-dm.org/ermakovich/pptr-mock-server/status.svg)](https://david-dm.org/ermakovich/pptr-mock-server)
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/ermakovich/pptr-mock-server/issues/139)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fermakovich%2Fpptr-mock-server.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fermakovich%2Fpptr-mock-server?ref=badge_shield)
 
 # pptr-mock-server
