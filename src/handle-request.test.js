@@ -102,6 +102,28 @@ describe('handle request', () => {
     expect(request.respond).toHaveBeenCalled();
   });
 
+  test('with delay if delay promise option provided', async () => {
+    let delayResolve;
+    const delay = new Promise((resolve)=> {
+      delayResolve = resolve;
+    });
+    const handlers = [
+      {
+        method: 'get',
+        endpoint,
+        options: {delay},
+      },
+    ];
+
+    request.url.mockReturnValue(endpoint);
+    request.method.mockReturnValue('GET');
+
+    delayResolve();
+    await handleRequest(request, config, handlers);
+
+    expect(request.respond).toHaveBeenCalled();
+  });
+
   test('if there is no match, but url starts with base api url', () => {
     request.url.mockReturnValue(endpoint);
     request.method.mockReturnValue('GET');

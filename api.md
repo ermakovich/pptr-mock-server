@@ -2,18 +2,18 @@
 
 ### Table of Contents
 
--   [MockServer][1]
-    -   [init][2]
-        -   [Parameters][3]
-        -   [Examples][4]
--   [InitOptions][5]
-    -   [Properties][6]
--   [MockRequest][7]
-    -   [on][8]
-        -   [Parameters][9]
-        -   [Examples][10]
--   [ResponseOptions][11]
-    -   [Properties][12]
+*   [MockServer][1]
+    *   [init][2]
+        *   [Parameters][3]
+        *   [Examples][4]
+*   [InitOptions][5]
+    *   [Properties][6]
+*   [MockRequest][7]
+    *   [on][8]
+        *   [Parameters][9]
+        *   [Examples][10]
+*   [ResponseOptions][11]
+    *   [Properties][12]
 
 ## MockServer
 
@@ -23,8 +23,8 @@ Init mock server and set request interception on the page
 
 #### Parameters
 
--   `page` **[Object][13]** Puppeteer's page
--   `options` **[InitOptions][14]** init options (optional, default `{}`)
+*   `page` **[Object][13]** Puppeteer's page
+*   `options` **[InitOptions][14]** init options (optional, default `{}`)
 
 #### Examples
 
@@ -43,7 +43,7 @@ const mockRequest = await mockServer.init(page, {
 // now you can use `mockRequest` in your tests
 ```
 
-Returns **[Promise][15]&lt;[MockRequest][16]>** 
+Returns **[Promise][15]<[MockRequest][16]>** 
 
 ## InitOptions
 
@@ -51,19 +51,19 @@ Type: [Object][13]
 
 ### Properties
 
--   `baseAppUrl` **[string][17]** Base app url. By default all requests matching
+*   `baseAppUrl` **[string][17]** Base app url. By default all requests matching
     base app url are continued.
--   `baseApiUrl` **[string][17]** Base api url. By default all requests matching
+*   `baseApiUrl` **[string][17]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
--   `onRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onRequest` **function (PuppeteerRequest)** Optional callback to be
     executed for any unhandled request. By default requests are aborted if this
     callback is not provided or returns falsy.
--   `onAppRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onAppRequest` **function (PuppeteerRequest)** Optional callback to be
     executed for any unhandled app request, i.e. request matching `baseAppUrl`
     option. By default requests are continued if this callback is not provided or
     returns falsy.
--   `onApiRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onApiRequest` **function (PuppeteerRequest)** Optional callback to be
     executed for any unhandled api request, i.e. request matching `baseApiUrl`
     option. By default requests are responded with `200 OK {}` for convenience if
     this callback is not provided or returns falsy.
@@ -80,16 +80,15 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 
 #### Parameters
 
--   `method` **[string][17]** request HTTP method
--   `endpoint` **[string][17]** request endpoint URL. If relative URL is passed,
+*   `method` **[string][17]** request HTTP method
+*   `endpoint` **[string][17]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
--   `status` **[number][18]** response status code
--   `response` **[ResponseOptions][19]** additional response options
+*   `status` **[number][18]** response status code
+*   `response` **[ResponseOptions][19]** additional response options
 
 #### Examples
 
 Handle request to relative endpoint
-
 
 ```javascript
 const responseConfig = {body: {result: 'ok'}};
@@ -98,14 +97,12 @@ mockRequest.on('get', 'account', 200, responseConfig);
 
 Using shortcut method and absolute url
 
-
 ```javascript
 const responseConfig = {body: {result: 'not found'}};
 mockRequest.get('https://example.com/test', 404, responseConfig);
 ```
 
 Simulate request timeout
-
 
 ```javascript
 mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
@@ -119,10 +116,10 @@ Type: [Object][13]
 
 ### Properties
 
--   `body` **[Object][13]** response body
--   `delay` **[number][18]?** delay response for N milliseconds
--   `abort` **[string][17]?** abort request with supplied error code
--   `contentType` **[string][17]?** content type. Defaults to
+*   `body` **[Object][13]** response body
+*   `delay` **([Promise][15] | [number][18])?** delay response for N milliseconds or until promise is resolved
+*   `abort` **[string][17]?** abort request with supplied error code
+*   `contentType` **[string][17]?** content type. Defaults to
     `application/json`.
 
 [1]: #mockserver
