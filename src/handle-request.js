@@ -45,8 +45,9 @@ export default async function handleRequest(
     let {body} = options;
     body = isFunction(body) ? body(request) : body;
 
-    if (options.delay) {
-      await sleep(options.delay);
+    const delay = options.delay;
+    if (delay) {
+      await delay.then ? delay : sleep(delay);
     }
 
     if (options.abort) {

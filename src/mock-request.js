@@ -56,7 +56,7 @@ export default function MockRequest(
 /**
  * @typedef {Object} ResponseOptions
  * @property {Object} body response body
- * @property {number=} delay delay response for N milliseconds
+ * @property {Promise|number=} delay delay response for N milliseconds or until promise is resolved
  * @property {string=} abort abort request with supplied error code
  * @property {string} [contentType] content type. Defaults to
  * `application/json`.
