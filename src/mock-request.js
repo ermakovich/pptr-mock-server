@@ -46,7 +46,7 @@ export default function MockRequest(
   this.on = (method, endpoint, status, response) =>
     handler(method, endpoint, status, response);
 
-  const methods = ['get', 'post', 'put', 'delete'];
+  const methods = ['get', 'post', 'put', 'delete','patch'];
   methods.forEach((method) => {
     this[method] = (endpoint, status, options) =>
       handler(method, endpoint, status, options);
