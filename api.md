@@ -24,7 +24,7 @@ Init mock server and set request interception on the page
 #### Parameters
 
 *   `page` **[Object][13]** Puppeteer's page
-*   `options` **[InitOptions][14]** init options (optional, default `{}`)
+*   `options` **[InitOptions][5]** init options (optional, default `{}`)
 
 #### Examples
 
@@ -43,7 +43,7 @@ const mockRequest = await mockServer.init(page, {
 // now you can use `mockRequest` in your tests
 ```
 
-Returns **[Promise][15]<[MockRequest][16]>** 
+Returns **[Promise][14]<[MockRequest][7]>**&#x20;
 
 ## InitOptions
 
@@ -51,9 +51,9 @@ Type: [Object][13]
 
 ### Properties
 
-*   `baseAppUrl` **[string][17]** Base app url. By default all requests matching
+*   `baseAppUrl` **[string][15]** Base app url. By default all requests matching
     base app url are continued.
-*   `baseApiUrl` **[string][17]** Base api url. By default all requests matching
+*   `baseApiUrl` **[string][15]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
 *   `onRequest` **function (PuppeteerRequest)** Optional callback to be
@@ -80,11 +80,11 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 
 #### Parameters
 
-*   `method` **[string][17]** request HTTP method
-*   `endpoint` **[string][17]** request endpoint URL. If relative URL is passed,
+*   `method` **[string][15]** request HTTP method
+*   `endpoint` **[string][15]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][18]** response status code
-*   `response` **[ResponseOptions][19]** additional response options
+*   `status` **[number][16]** response status code
+*   `response` **[ResponseOptions][11]** additional response options
 
 #### Examples
 
@@ -108,7 +108,7 @@ Simulate request timeout
 mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
 ```
 
-Returns **[MockRequest][16]** 
+Returns **[MockRequest][7]**&#x20;
 
 ## ResponseOptions
 
@@ -117,9 +117,9 @@ Type: [Object][13]
 ### Properties
 
 *   `body` **[Object][13]** response body
-*   `delay` **([Promise][15] | [number][18])?** delay response for N milliseconds or until promise is resolved
-*   `abort` **[string][17]?** abort request with supplied error code
-*   `contentType` **[string][17]?** content type. Defaults to
+*   `delay` **([Promise][14] | [number][16])?** delay response for N milliseconds or until promise is resolved
+*   `abort` **[string][15]?** abort request with supplied error code
+*   `contentType` **[string][15]?** content type. Defaults to
     `application/json`.
 
 [1]: #mockserver
@@ -148,14 +148,8 @@ Type: [Object][13]
 
 [13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[14]: #initoptions
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[16]: #mockrequest
-
-[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
-
-[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
-
-[19]: #responseoptions
+[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
