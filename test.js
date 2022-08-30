@@ -10,6 +10,7 @@ test('inits normally with Puppeteer', async () => {
 
   try {
     await mockServer.init(page);
+    expect(true).toBeDefined();
   } finally {
     await browser.close();
   }
