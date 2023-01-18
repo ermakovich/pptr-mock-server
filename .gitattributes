@@ -1,1 +1,7 @@
-node_modules/dev-configs/.gitattributes
+* text=auto
+
+*.js text eol=lf
+*.css text eol=lf
+*.less text eol=lf
+*.html text eol=lf
+*.svg text eol=lf

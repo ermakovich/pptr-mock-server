@@ -3437,11 +3437,6 @@ detect-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
 
-dev-configs@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/dev-configs/-/dev-configs-1.1.0.tgz#7336afbc52bc1ca1fd4828bf7f9170a7769672e2"
-  integrity sha512-hWmutdvdBInf/SC43t0vljbqixMpwon3wuZjx8tWhjX/fW7U7OLMpSeSevOe8o2cMrKg1x1Yr6dOx5LXgOn2Ig==
-
 devtools-protocol@0.0.1068969:
   version "0.0.1068969"
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1068969.tgz#8b9a4bc48aed1453bed08d62b07481f9abf4d6d8"
