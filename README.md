@@ -19,12 +19,7 @@ modify any window APIs like `XMLHttpRequest`. This provides great flexibility
 and performance when handling requests, since it operates on browser internal
 level.
 
-NOTE: we use this library heavily in automated tests for Dock and related
-projects, but api surface is minimalistic, so it may not fit your needs.
-Contributions are welcome, so we can make this library more flexible and cover
-more usage scenarios.
-
-Recommended reading: [Automated UI Testing at Dock](https://ermakovich.name/posts/automated-ui-testing-at-dock/).
+Recommended reading: [Automated UI Testing at Dock](https://ermakovich.ru/posts/automated-ui-testing-at-dock/).
 
 ### Installing
 
