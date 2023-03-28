@@ -74,7 +74,7 @@ mockRequest.get('account', 200, responseConfig) // returns 200 on each request
 mockRequest.get('account', 401) // replaces existing handler
 ```
 
-[Full api docs](api.md)
+[Full api docs](docs/api.md)
 
 ## License
 

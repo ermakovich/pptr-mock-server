@@ -29,17 +29,17 @@ Init mock server and set request interception on the page
 #### Examples
 
 ```javascript
-import puppeteer from 'puppeteer';
-import mockServer from 'pptr-mock-server';
+import puppeteer from 'puppeteer'
+import mockServer from 'pptr-mock-server'
 
 // typically your global test setup
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
-const baseAppUrl = 'http://localhost';
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+const baseAppUrl = 'http://localhost'
 const mockRequest = await mockServer.init(page, {
   baseAppUrl,
   baseApiUrl: baseAppUrl + '/api/'
-});
+})
 // now you can use `mockRequest` in your tests
 ```
 
@@ -91,21 +91,21 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 Handle request to relative endpoint
 
 ```javascript
-const responseConfig = {body: {result: 'ok'}};
-mockRequest.on('get', 'account', 200, responseConfig);
+const responseConfig = { body: { result: 'ok' } }
+mockRequest.on('get', 'account', 200, responseConfig)
 ```
 
 Using shortcut method and absolute url
 
 ```javascript
-const responseConfig = {body: {result: 'not found'}};
-mockRequest.get('https://example.com/test', 404, responseConfig);
+const responseConfig = { body: { result: 'not found' } }
+mockRequest.get('https://example.com/test', 404, responseConfig)
 ```
 
 Simulate request timeout
 
 ```javascript
-mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
+mockRequest.post('search', null, { abort: 'timedout', delay: 10000 })
 ```
 
 Returns **[MockRequest][7]**&#x20;

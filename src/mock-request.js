@@ -35,13 +35,13 @@ export default function MockRequest(
    * @param {ResponseOptions} response additional response options
    * @return {MockRequest}
    * @example <caption>Handle request to relative endpoint</caption>
-   * const responseConfig = {body: {result: 'ok'}};
-   * mockRequest.on('get', 'account', 200, responseConfig);
+   * const responseConfig = { body: { result: 'ok' } }
+   * mockRequest.on('get', 'account', 200, responseConfig)
    * @example <caption>Using shortcut method and absolute url</caption>
-   * const responseConfig = {body: {result: 'not found'}};
-   * mockRequest.get('https://example.com/test', 404, responseConfig);
+   * const responseConfig = { body: { result: 'not found' } }
+   * mockRequest.get('https://example.com/test', 404, responseConfig)
    * @example <caption>Simulate request timeout</caption>
-   * mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
+   * mockRequest.post('search', null, { abort: 'timedout', delay: 10000 })
    */
   this.on = (method, endpoint, status, response) =>
     handler(method, endpoint, status, response)

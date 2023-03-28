@@ -8,10 +8,10 @@
     "prepublish": "npm run build",
     "test": "jest",
     "test-ci": "jest --coverage --ci --runInBand --reporters=jest-junit --coverageReporters=text-lcov | coveralls",
-    "format": "prettier --write \"**/*.js\"",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "lint-ci": "eslint . --format junit -o reports/junit/lint-results.xml",
-    "docs": "documentation build src/index.js -f md -o api.md"
+    "docs": "documentation build src/index.js -f md -o docs/api.md"
   },
   "repository": {
     "type": "git",

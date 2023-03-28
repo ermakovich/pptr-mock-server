@@ -12,17 +12,17 @@ export default function MockServer() {
    * @param {InitOptions} options init options
    * @return {Promise<MockRequest>}
    * @example
-   * import puppeteer from 'puppeteer';
-   * import mockServer from 'pptr-mock-server';
+   * import puppeteer from 'puppeteer'
+   * import mockServer from 'pptr-mock-server'
    *
    * // typically your global test setup
-   * const browser = await puppeteer.launch();
-   * const page = await browser.newPage();
-   * const baseAppUrl = 'http://localhost';
+   * const browser = await puppeteer.launch()
+   * const page = await browser.newPage()
+   * const baseAppUrl = 'http://localhost'
    * const mockRequest = await mockServer.init(page, {
    *   baseAppUrl,
    *   baseApiUrl: baseAppUrl + '/api/'
-   * });
+   * })
    * // now you can use `mockRequest` in your tests
    */
   this.init = async (page, options = {}) => {
