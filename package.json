@@ -49,5 +49,8 @@
   "jest-junit": {
     "output": "./reports/junit/test-results.xml"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=14"
+  }
 }
