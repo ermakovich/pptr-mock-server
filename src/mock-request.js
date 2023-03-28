@@ -1,4 +1,4 @@
-import isNumber from 'lodash/fp/isNumber';
+import isNumber from 'lodash/fp/isNumber'
 
 /**
  * Class for registering mock responses. It's instance is returned by
@@ -13,16 +13,16 @@ export default function MockRequest(
 ) {
   const handler = (method, endpoint, status, options = {}) => {
     if (!endpoint.startsWith('http://') && !endpoint.startsWith('https://')) {
-      endpoint = baseApiUrl + endpoint;
+      endpoint = baseApiUrl + endpoint
     }
 
     if (isNumber(options.delay)) {
-      options.delay *= timeScaleFactor;
+      options.delay *= timeScaleFactor
     }
 
-    handlers.push({method, endpoint, status, options});
-    return this;
-  };
+    handlers.push({ method, endpoint, status, options })
+    return this
+  }
 
   /**
    * Set expected mock response for request. There are also shortcuts `.get()`,
@@ -44,13 +44,13 @@ export default function MockRequest(
    * mockRequest.post('search', null, {abort: 'timedout', delay: 10000});
    */
   this.on = (method, endpoint, status, response) =>
-    handler(method, endpoint, status, response);
+    handler(method, endpoint, status, response)
 
-  const methods = ['get', 'post', 'put', 'delete','patch'];
+  const methods = ['get', 'post', 'put', 'delete', 'patch']
   methods.forEach((method) => {
     this[method] = (endpoint, status, options) =>
-      handler(method, endpoint, status, options);
-  });
+      handler(method, endpoint, status, options)
+  })
 }
 
 /**

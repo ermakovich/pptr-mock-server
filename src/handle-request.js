@@ -1,30 +1,30 @@
-import isFunction from 'lodash/fp/isFunction';
-import lowerCase from 'lodash/fp/lowerCase';
-import findLast from 'lodash/fp/findLast';
-import chalk from 'chalk';
+import isFunction from 'lodash/fp/isFunction'
+import lowerCase from 'lodash/fp/lowerCase'
+import findLast from 'lodash/fp/findLast'
+import chalk from 'chalk'
 
-import sleep from './sleep';
+import sleep from './sleep'
 
-const {URL} = require('url');
+const { URL } = require('url')
 
-const consolePrefix = `[${chalk.blue('pptr-mock-server')}]`;
+const consolePrefix = `[${chalk.blue('pptr-mock-server')}]`
 
 function formatRequest(request) {
-  return chalk.green(`${request.method()} ${request.url()}`);
+  return chalk.green(`${request.method()} ${request.url()}`)
 }
 
 function warn(message) {
-  console.warn(`${consolePrefix} [warning] ${message}`);
+  console.warn(`${consolePrefix} [warning] ${message}`)
 }
 
 export default async function handleRequest(
   request,
-  {baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest},
+  { baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest },
   handlers
 ) {
-  const requestUrlStr = request.url();
-  const requestUrl = new URL(requestUrlStr);
-  const requestPath = requestUrl.origin + requestUrl.pathname;
+  const requestUrlStr = request.url()
+  const requestUrl = new URL(requestUrlStr)
+  const requestPath = requestUrl.origin + requestUrl.pathname
 
   const handler = findLast((handler) => {
     // checking for both `requestUrlStr` and `requestPath` allows to register
@@ -34,24 +34,22 @@ export default async function handleRequest(
     // register handler as `http://foo?query` it won't be matched against
     // `http://foo`.
     const urlMatch =
-      handler.endpoint === requestUrlStr || handler.endpoint === requestPath;
-    return (
-      urlMatch && lowerCase(request.method()) === lowerCase(handler.method)
-    );
-  })(handlers);
+      handler.endpoint === requestUrlStr || handler.endpoint === requestPath
+    return urlMatch && lowerCase(request.method()) === lowerCase(handler.method)
+  })(handlers)
 
   if (handler) {
-    const {status, options} = handler;
-    let {body} = options;
-    body = isFunction(body) ? body(request) : body;
+    const { status, options } = handler
+    let { body } = options
+    body = isFunction(body) ? body(request) : body
 
-    const delay = options.delay;
+    const delay = options.delay
     if (delay) {
-      await delay.then ? delay : sleep(delay);
+      await (delay.then ? delay : sleep(delay))
     }
 
     if (options.abort) {
-      request.abort(options.abort);
+      request.abort(options.abort)
     } else {
       request.respond({
         status,
@@ -60,19 +58,19 @@ export default async function handleRequest(
         headers: {
           'access-control-allow-origin': baseAppUrl,
         },
-      });
+      })
     }
   } else if (requestUrlStr.startsWith(baseApiUrl)) {
-    let apiRequestHandled;
+    let apiRequestHandled
     if (onApiRequest) {
-      apiRequestHandled = onApiRequest(request);
+      apiRequestHandled = onApiRequest(request)
     }
     if (!apiRequestHandled) {
       warn(
         `Unhandled api request! ${formatRequest(
           request
         )}. Responding with 200 OK {}.`
-      );
+      )
       request.respond({
         status: 200,
         contentType: 'application/json',
@@ -81,28 +79,28 @@ export default async function handleRequest(
           'access-control-allow-origin': baseAppUrl,
           'access-control-allow-headers': 'Authorization, Content-Type',
         },
-      });
+      })
     }
-    return true;
+    return true
   } else if (
     requestUrlStr.startsWith(baseAppUrl) ||
     requestUrlStr.startsWith('data:')
   ) {
-    let appRequestHandled;
+    let appRequestHandled
     if (onAppRequest) {
-      appRequestHandled = onAppRequest(request);
+      appRequestHandled = onAppRequest(request)
     }
     if (!appRequestHandled) {
-      request.continue();
+      request.continue()
     }
   } else {
-    let requestHandled;
+    let requestHandled
     if (onRequest) {
-      requestHandled = onRequest(request);
+      requestHandled = onRequest(request)
     }
     if (!requestHandled) {
-      warn(`Unhandled external request! ${formatRequest(request)}. Aborting.`);
-      request.abort();
+      warn(`Unhandled external request! ${formatRequest(request)}. Aborting.`)
+      request.abort()
     }
   }
 }

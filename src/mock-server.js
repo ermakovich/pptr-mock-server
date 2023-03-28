@@ -1,5 +1,5 @@
-import handleRequest from './handle-request';
-import MockRequest from './mock-request';
+import handleRequest from './handle-request'
+import MockRequest from './mock-request'
 
 /**
  * @class
@@ -33,20 +33,20 @@ export default function MockServer() {
       onAppRequest,
       onApiRequest,
       timeScaleFactor = 1,
-    } = options;
+    } = options
 
-    const handlers = [];
-    await page.setRequestInterception(true);
+    const handlers = []
+    await page.setRequestInterception(true)
     await page.on('request', (request) =>
       handleRequest(
         request,
-        {baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest},
+        { baseAppUrl, baseApiUrl, onRequest, onAppRequest, onApiRequest },
         handlers
       )
-    );
+    )
 
-    return new MockRequest(handlers, baseApiUrl, timeScaleFactor);
-  };
+    return new MockRequest(handlers, baseApiUrl, timeScaleFactor)
+  }
 }
 
 /**

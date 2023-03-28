@@ -1,3 +1,3 @@
-import MockServer from './mock-server';
+import MockServer from './mock-server'
 
-export default new MockServer();
+export default new MockServer()

@@ -1,4 +1,4 @@
-import handleRequest from './handle-request';
+import handleRequest from './handle-request'
 
 const request = {
   url: jest.fn(),
@@ -6,17 +6,17 @@ const request = {
   respond: jest.fn(),
   continue: jest.fn(),
   abort: jest.fn(),
-};
+}
 
-const baseAppUrl = 'http://localhost/';
-const baseApiUrl = baseAppUrl + 'api/';
-const endpoint = baseApiUrl + 'account';
+const baseAppUrl = 'http://localhost/'
+const baseApiUrl = baseAppUrl + 'api/'
+const endpoint = baseApiUrl + 'account'
 
-const config = {baseAppUrl, baseApiUrl};
+const config = { baseAppUrl, baseApiUrl }
 
 describe('handle request', () => {
   test('if there is request URL and method match', () => {
-    const status = 200;
+    const status = 200
 
     const handlers = [
       {
@@ -25,12 +25,12 @@ describe('handle request', () => {
         status,
         options: {},
       },
-    ];
+    ]
 
-    request.url.mockReturnValue(endpoint);
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint)
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers)
 
     expect(request.respond).toHaveBeenCalledWith({
       status,
@@ -38,11 +38,11 @@ describe('handle request', () => {
       headers: {
         'access-control-allow-origin': baseAppUrl,
       },
-    });
-  });
+    })
+  })
 
   test('if there is request path and method match', () => {
-    const status = 200;
+    const status = 200
 
     const handlers = [
       {
@@ -51,12 +51,12 @@ describe('handle request', () => {
         status,
         options: {},
       },
-    ];
+    ]
 
-    request.url.mockReturnValue(endpoint + '?query');
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint + '?query')
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers)
 
     expect(request.respond).toHaveBeenCalledWith({
       status,
@@ -64,71 +64,71 @@ describe('handle request', () => {
       headers: {
         'access-control-allow-origin': baseAppUrl,
       },
-    });
-  });
+    })
+  })
 
   test('by aborting it if abort option provided', () => {
     const handlers = [
       {
         method: 'get',
         endpoint,
-        options: {abort: true},
+        options: { abort: true },
       },
-    ];
+    ]
 
-    request.url.mockReturnValue(endpoint);
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint)
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config, handlers);
+    handleRequest(request, config, handlers)
 
-    expect(request.abort).toHaveBeenCalled();
-  });
+    expect(request.abort).toHaveBeenCalled()
+  })
 
   test('with delay if delay option provided', async () => {
-    const delay = 10;
+    const delay = 10
     const handlers = [
       {
         method: 'get',
         endpoint,
-        options: {delay},
+        options: { delay },
       },
-    ];
+    ]
 
-    request.url.mockReturnValue(endpoint);
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint)
+    request.method.mockReturnValue('GET')
 
-    await handleRequest(request, config, handlers);
+    await handleRequest(request, config, handlers)
 
-    expect(request.respond).toHaveBeenCalled();
-  });
+    expect(request.respond).toHaveBeenCalled()
+  })
 
   test('with delay if delay promise option provided', async () => {
-    let delayResolve;
-    const delay = new Promise((resolve)=> {
-      delayResolve = resolve;
-    });
+    let delayResolve
+    const delay = new Promise((resolve) => {
+      delayResolve = resolve
+    })
     const handlers = [
       {
         method: 'get',
         endpoint,
-        options: {delay},
+        options: { delay },
       },
-    ];
+    ]
 
-    request.url.mockReturnValue(endpoint);
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint)
+    request.method.mockReturnValue('GET')
 
-    delayResolve();
-    await handleRequest(request, config, handlers);
+    delayResolve()
+    await handleRequest(request, config, handlers)
 
-    expect(request.respond).toHaveBeenCalled();
-  });
+    expect(request.respond).toHaveBeenCalled()
+  })
 
   test('if there is no match, but url starts with base api url', () => {
-    request.url.mockReturnValue(endpoint);
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(endpoint)
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config);
+    handleRequest(request, config)
 
     expect(request.respond).toHaveBeenCalledWith({
       status: 200,
@@ -138,33 +138,33 @@ describe('handle request', () => {
         'access-control-allow-origin': baseAppUrl,
         'access-control-allow-headers': 'Authorization, Content-Type',
       },
-    });
-  });
+    })
+  })
 
   test('if there is no match, but url starts with base app url', () => {
-    request.url.mockReturnValue(baseAppUrl + 'foo');
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue(baseAppUrl + 'foo')
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config);
+    handleRequest(request, config)
 
-    expect(request.continue).toHaveBeenCalled();
-  });
+    expect(request.continue).toHaveBeenCalled()
+  })
 
   test('if there is no match, but url is data: url', () => {
-    request.url.mockReturnValue('data:image/png');
-    request.method.mockReturnValue('GET');
+    request.url.mockReturnValue('data:image/png')
+    request.method.mockReturnValue('GET')
 
-    handleRequest(request, config);
+    handleRequest(request, config)
 
-    expect(request.continue).toHaveBeenCalled();
-  });
-});
+    expect(request.continue).toHaveBeenCalled()
+  })
+})
 
 test('abort all unhandled requests', () => {
-  request.url.mockReturnValue('http://foo');
-  request.method.mockReturnValue('GET');
+  request.url.mockReturnValue('http://foo')
+  request.method.mockReturnValue('GET')
 
-  handleRequest(request, config);
+  handleRequest(request, config)
 
-  expect(request.abort).toHaveBeenCalled();
-});
+  expect(request.abort).toHaveBeenCalled()
+})
