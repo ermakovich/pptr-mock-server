@@ -10,19 +10,18 @@
 *   [ResponseOptions][6]
     *   [Properties][7]
 *   [MockRequest][8]
-    *   [Parameters][9]
-    *   [on][10]
-        *   [Parameters][11]
-    *   [get][12]
-        *   [Parameters][13]
-    *   [post][14]
-        *   [Parameters][15]
-    *   [put][16]
-        *   [Parameters][17]
-    *   [delete][18]
-        *   [Parameters][19]
-    *   [patch][20]
-        *   [Parameters][21]
+    *   [on][9]
+        *   [Parameters][10]
+    *   [get][11]
+        *   [Parameters][12]
+    *   [post][13]
+        *   [Parameters][14]
+    *   [put][15]
+        *   [Parameters][16]
+    *   [delete][17]
+        *   [Parameters][18]
+    *   [patch][19]
+        *   [Parameters][20]
 
 ## MockServer
 
@@ -35,52 +34,47 @@ Init mock server and set request interception on the page
 *   `page` **Page** Puppeteer's page
 *   `options` **[InitOptions][4]** init options
 
-Returns **[Promise][22]<[MockRequest][8]>**&#x20;
+Returns **[Promise][21]<[MockRequest][8]>**&#x20;
 
 ## InitOptions
 
-Type: [Object][23]
+Type: [Object][22]
 
 ### Properties
 
-*   `baseAppUrl` **[string][24]** Base app url. By default all requests matching
+*   `baseAppUrl` **[string][23]** Base app url. By default all requests matching
     base app url are continued.
-*   `baseApiUrl` **[string][24]** Base api url. By default all requests matching
+*   `baseApiUrl` **[string][23]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
-*   `onRequest` **function (PuppeteerRequest)?** Optional callback to be
+*   `onRequest` **function (HTTPRequest)?** Optional callback to be
     executed for any unhandled request. By default requests are aborted if this
     callback is not provided or returns falsy.
-*   `onAppRequest` **function (PuppeteerRequest)?** Optional callback to be
+*   `onAppRequest` **function (HTTPRequest)?** Optional callback to be
     executed for any unhandled app request, i.e. request matching `baseAppUrl`
     option. By default requests are continued if this callback is not provided or
     returns falsy.
-*   `onApiRequest` **function (PuppeteerRequest)?** Optional callback to be
+*   `onApiRequest` **function (HTTPRequest)?** Optional callback to be
     executed for any unhandled api request, i.e. request matching `baseApiUrl`
     option. By default requests are responded with `200 OK {}` for convenience if
     this callback is not provided or returns falsy.
 
 ## ResponseOptions
 
-Type: [Object][23]
+Type: [Object][22]
 
 ### Properties
 
-*   `body` **(function (HTTPRequest): [Object][23] | [Object][23])?** response body
-*   `delay` **([Promise][22] | [number][25])?** delay response for N milliseconds or until promise is resolved
-*   `abort` **[string][24]?** abort request with supplied error code
-*   `contentType` **[string][24]?** content type. Defaults to
+*   `body` **(function (HTTPRequest): [Object][22] | [Object][22])?** response body
+*   `delay` **([Promise][21] | [number][24])?** delay response for N milliseconds or until promise is resolved
+*   `abort` **[string][23]?** abort request with supplied error code
+*   `contentType` **[string][23]?** content type. Defaults to
     `application/json`.
 
 ## MockRequest
 
 Class for registering mock responses. It's instance is returned by
 `mockServer.init()`
-
-### Parameters
-
-*   `handlers` **[Array][26]\<RequestHandler>**&#x20;
-*   `baseApiUrl` **[string][24]**&#x20;
 
 ### on
 
@@ -89,10 +83,10 @@ Set expected mock response for request. There are also shortcuts `.get()`,
 
 #### Parameters
 
-*   `method` **[string][24]** request HTTP method
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `method` **[string][23]** request HTTP method
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -103,9 +97,9 @@ Shortcut for `.on('get', ...)`
 
 #### Parameters
 
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -116,9 +110,9 @@ Shortcut for `.on('post', ...)`
 
 #### Parameters
 
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -129,9 +123,9 @@ Shortcut for `.on('put', ...)`
 
 #### Parameters
 
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -142,9 +136,9 @@ Shortcut for `.on('delete', ...)`
 
 #### Parameters
 
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -155,9 +149,9 @@ Shortcut for `.on('patch', ...)`
 
 #### Parameters
 
-*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+*   `endpoint` **[string][23]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][25]** response status code
+*   `status` **[number][24]** response status code
 *   `options` **[ResponseOptions][6]?** additional response options
 
 Returns **[MockRequest][8]**&#x20;
@@ -178,38 +172,34 @@ Returns **[MockRequest][8]**&#x20;
 
 [8]: #mockrequest
 
-[9]: #parameters-1
+[9]: #on
 
-[10]: #on
+[10]: #parameters-1
 
-[11]: #parameters-2
+[11]: #get
 
-[12]: #get
+[12]: #parameters-2
 
-[13]: #parameters-3
+[13]: #post
 
-[14]: #post
+[14]: #parameters-3
 
-[15]: #parameters-4
+[15]: #put
 
-[16]: #put
+[16]: #parameters-4
 
-[17]: #parameters-5
+[17]: #delete
 
-[18]: #delete
+[18]: #parameters-5
 
-[19]: #parameters-6
+[19]: #patch
 
-[20]: #patch
+[20]: #parameters-6
 
-[21]: #parameters-7
+[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
-
-[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
-
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

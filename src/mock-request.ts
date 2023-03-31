@@ -4,7 +4,6 @@ import { ResponseOptions, RequestHandler } from './handle-request'
  * Class for registering mock responses. It's instance is returned by
  * `mockServer.init()`
  * @class
- * @hideconstructor
  */
 export default class MockRequest {
   /** @private */
@@ -12,6 +11,7 @@ export default class MockRequest {
   /** @private */
   private readonly baseApiUrl: string
 
+  /** @hideconstructor */
   constructor(handlers: RequestHandler[], baseApiUrl: string) {
     this.handlers = handlers
     this.baseApiUrl = baseApiUrl

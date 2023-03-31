@@ -49,7 +49,7 @@ Once you have an instance of [MockRequest](api.md#mockrequest) you can pass it t
 
 ```JavaScript
 const responseConfig = { body: { result: 'ok' } }
-mockRequest.on('GET', 'http://localhost/api/account', 200, responseConfig)
+mockRequest.on('get', 'http://localhost/api/account', 200, responseConfig)
 ```
 
 But since you provided `baseApiUrl` as http://localhost/api, you can use relative endpoint name. Also you can use `.get()` shorthand method instead of `.on()`:
@@ -64,21 +64,21 @@ the mock response provided.
 
 ### Common scenarios
 
-Handle request to relative endpoint using `.on` method
+Handle request to relative endpoint using `.on` method:
 
 ```JavaScript
 const responseConfig = { body: { result: 'ok' } }
 mockRequest.on('get', 'account', 200, responseConfig)
 ```
 
-Using shortcut `.get` method and absolute url
+Using shortcut `.get` method and absolute url:
 
 ```JavaScript
 const responseConfig = { body: { result: 'not found' } }
 mockRequest.get('https://example.com/test', 404, responseConfig)
 ```
 
-Simulate request timeout
+Simulate request timeout:
 
 ```JavaScript
 mockRequest.post('search', null, { abort: 'timedout', delay: 10000 })
