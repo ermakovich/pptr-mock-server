@@ -9,7 +9,11 @@ test('inits normally with Puppeteer', async () => {
   const page = await browser.newPage()
 
   try {
-    await mockServer.init(page)
+    const mockRequest = await mockServer.init(page, {
+      baseAppUrl: '',
+      baseApiUrl: '',
+    })
+    mockRequest.on('get', '/foo', 200, {})
     expect(true).toBeDefined()
   } finally {
     await browser.close()

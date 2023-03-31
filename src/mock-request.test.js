@@ -54,10 +54,3 @@ test('add proper status for handler', () => {
   const handler = first(handlers)
   expect(handler.status).toBe(200)
 })
-
-test('multiply delay by time scale factor', () => {
-  const mockRequest = new MockRequest(handlers, null, 0.1)
-  mockRequest.get('account', null, { delay: 100 })
-  const handler = first(handlers)
-  expect(handler.options.delay).toBe(10)
-})

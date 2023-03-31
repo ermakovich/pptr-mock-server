@@ -2,11 +2,7 @@
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "allowJs": true,
-    "declaration": true,
-    // temporary rules
-    "noImplicitAny": false
+    "declaration": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.test.js"]
+  "include": ["src/**/*"]
 }

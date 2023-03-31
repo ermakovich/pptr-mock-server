@@ -5,15 +5,24 @@
 *   [MockServer][1]
     *   [init][2]
         *   [Parameters][3]
-        *   [Examples][4]
-*   [InitOptions][5]
-    *   [Properties][6]
-*   [MockRequest][7]
-    *   [on][8]
-        *   [Parameters][9]
-        *   [Examples][10]
-*   [ResponseOptions][11]
-    *   [Properties][12]
+*   [InitOptions][4]
+    *   [Properties][5]
+*   [ResponseOptions][6]
+    *   [Properties][7]
+*   [MockRequest][8]
+    *   [Parameters][9]
+    *   [on][10]
+        *   [Parameters][11]
+    *   [get][12]
+        *   [Parameters][13]
+    *   [post][14]
+        *   [Parameters][15]
+    *   [put][16]
+        *   [Parameters][17]
+    *   [delete][18]
+        *   [Parameters][19]
+    *   [patch][20]
+        *   [Parameters][21]
 
 ## MockServer
 
@@ -23,104 +32,135 @@ Init mock server and set request interception on the page
 
 #### Parameters
 
-*   `page` **[Object][13]** Puppeteer's page
-*   `options` **[InitOptions][5]** init options (optional, default `{}`)
+*   `page` **Page** Puppeteer's page
+*   `options` **[InitOptions][4]** init options
 
-#### Examples
-
-```javascript
-import puppeteer from 'puppeteer'
-import mockServer from 'pptr-mock-server'
-
-// typically your global test setup
-const browser = await puppeteer.launch()
-const page = await browser.newPage()
-const baseAppUrl = 'http://localhost'
-const mockRequest = await mockServer.init(page, {
-  baseAppUrl,
-  baseApiUrl: baseAppUrl + '/api/'
-})
-// now you can use `mockRequest` in your tests
-```
-
-Returns **[Promise][14]<[MockRequest][7]>**&#x20;
+Returns **[Promise][22]<[MockRequest][8]>**&#x20;
 
 ## InitOptions
 
-Type: [Object][13]
+Type: [Object][23]
 
 ### Properties
 
-*   `baseAppUrl` **[string][15]** Base app url. By default all requests matching
+*   `baseAppUrl` **[string][24]** Base app url. By default all requests matching
     base app url are continued.
-*   `baseApiUrl` **[string][15]** Base api url. By default all requests matching
+*   `baseApiUrl` **[string][24]** Base api url. By default all requests matching
     base api url are responded with 200 status and empty body, but you will see a
     warning in output.
-*   `onRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onRequest` **function (PuppeteerRequest)?** Optional callback to be
     executed for any unhandled request. By default requests are aborted if this
     callback is not provided or returns falsy.
-*   `onAppRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onAppRequest` **function (PuppeteerRequest)?** Optional callback to be
     executed for any unhandled app request, i.e. request matching `baseAppUrl`
     option. By default requests are continued if this callback is not provided or
     returns falsy.
-*   `onApiRequest` **function (PuppeteerRequest)** Optional callback to be
+*   `onApiRequest` **function (PuppeteerRequest)?** Optional callback to be
     executed for any unhandled api request, i.e. request matching `baseApiUrl`
     option. By default requests are responded with `200 OK {}` for convenience if
     this callback is not provided or returns falsy.
+
+## ResponseOptions
+
+Type: [Object][23]
+
+### Properties
+
+*   `body` **(function (HTTPRequest): [Object][23] | [Object][23])?** response body
+*   `delay` **([Promise][22] | [number][25])?** delay response for N milliseconds or until promise is resolved
+*   `abort` **[string][24]?** abort request with supplied error code
+*   `contentType` **[string][24]?** content type. Defaults to
+    `application/json`.
 
 ## MockRequest
 
 Class for registering mock responses. It's instance is returned by
 `mockServer.init()`
 
+### Parameters
+
+*   `handlers` **[Array][26]\<RequestHandler>**&#x20;
+*   `baseApiUrl` **[string][24]**&#x20;
+
 ### on
 
 Set expected mock response for request. There are also shortcuts `.get()`,
-`.post()`, `.put()` and `.delete()` available
+`.post()`, `.put()`, `.delete()` and '.patch()\` available
 
 #### Parameters
 
-*   `method` **[string][15]** request HTTP method
-*   `endpoint` **[string][15]** request endpoint URL. If relative URL is passed,
+*   `method` **[string][24]** request HTTP method
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
     it's considered as a request to api **relative** to baseApiUrl.
-*   `status` **[number][16]** response status code
-*   `response` **[ResponseOptions][11]** additional response options
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
 
-#### Examples
+Returns **[MockRequest][8]**&#x20;
 
-Handle request to relative endpoint
+### get
 
-```javascript
-const responseConfig = { body: { result: 'ok' } }
-mockRequest.on('get', 'account', 200, responseConfig)
-```
+Shortcut for `.on('get', ...)`
 
-Using shortcut method and absolute url
+#### Parameters
 
-```javascript
-const responseConfig = { body: { result: 'not found' } }
-mockRequest.get('https://example.com/test', 404, responseConfig)
-```
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
 
-Simulate request timeout
+Returns **[MockRequest][8]**&#x20;
 
-```javascript
-mockRequest.post('search', null, { abort: 'timedout', delay: 10000 })
-```
+### post
 
-Returns **[MockRequest][7]**&#x20;
+Shortcut for `.on('post', ...)`
 
-## ResponseOptions
+#### Parameters
 
-Type: [Object][13]
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
 
-### Properties
+Returns **[MockRequest][8]**&#x20;
 
-*   `body` **[Object][13]** response body
-*   `delay` **([Promise][14] | [number][16])?** delay response for N milliseconds or until promise is resolved
-*   `abort` **[string][15]?** abort request with supplied error code
-*   `contentType` **[string][15]?** content type. Defaults to
-    `application/json`.
+### put
+
+Shortcut for `.on('put', ...)`
+
+#### Parameters
+
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
+
+Returns **[MockRequest][8]**&#x20;
+
+### delete
+
+Shortcut for `.on('delete', ...)`
+
+#### Parameters
+
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
+
+Returns **[MockRequest][8]**&#x20;
+
+### patch
+
+Shortcut for `.on('patch', ...)`
+
+#### Parameters
+
+*   `endpoint` **[string][24]** request endpoint URL. If relative URL is passed,
+    it's considered as a request to api **relative** to baseApiUrl.
+*   `status` **[number][25]** response status code
+*   `options` **[ResponseOptions][6]?** additional response options
+
+Returns **[MockRequest][8]**&#x20;
 
 [1]: #mockserver
 
@@ -128,28 +168,48 @@ Type: [Object][13]
 
 [3]: #parameters
 
-[4]: #examples
+[4]: #initoptions
 
-[5]: #initoptions
+[5]: #properties
 
-[6]: #properties
+[6]: #responseoptions
 
-[7]: #mockrequest
+[7]: #properties-1
 
-[8]: #on
+[8]: #mockrequest
 
 [9]: #parameters-1
 
-[10]: #examples-1
+[10]: #on
 
-[11]: #responseoptions
+[11]: #parameters-2
 
-[12]: #properties-1
+[12]: #get
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[13]: #parameters-3
 
-[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[14]: #post
 
-[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[15]: #parameters-4
 
-[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[16]: #put
+
+[17]: #parameters-5
+
+[18]: #delete
+
+[19]: #parameters-6
+
+[20]: #patch
+
+[21]: #parameters-7
+
+[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

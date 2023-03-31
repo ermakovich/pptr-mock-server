@@ -62,7 +62,29 @@ mockRequest.get('account', 200, responseConfig)
 When your app performs request to the specified resource, it will respond with
 the mock response provided.
 
-#### Mocking sequence of identical requests
+### Common scenarios
+
+Handle request to relative endpoint using `.on` method
+
+```JavaScript
+const responseConfig = { body: { result: 'ok' } }
+mockRequest.on('get', 'account', 200, responseConfig)
+```
+
+Using shortcut `.get` method and absolute url
+
+```JavaScript
+const responseConfig = { body: { result: 'not found' } }
+mockRequest.get('https://example.com/test', 404, responseConfig)
+```
+
+Simulate request timeout
+
+```JavaScript
+mockRequest.post('search', null, { abort: 'timedout', delay: 10000 })
+```
+
+### Mocking sequence of identical requests
 
 Once you setup a mock request handler, every matching request will be responded with it. However it's a common scenario when you need to mock a sequence of requests, when over time the same request produces different results. Recommended way to do it is to replace previously registered mock response using new one:
 
@@ -74,7 +96,7 @@ mockRequest.get('account', 200, responseConfig) // returns 200 on each request
 mockRequest.get('account', 401) // replaces existing handler
 ```
 
-[Full api docs](docs/api.md)
+### [Full API reference 👉](docs/api.md)
 
 ## License
 
