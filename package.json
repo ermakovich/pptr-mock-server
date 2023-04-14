@@ -37,7 +37,7 @@
     "@babel/preset-env": "7.21.4",
     "@babel/preset-typescript": "7.21.4",
     "@tsconfig/node14": "1.0.3",
-    "@types/lodash": "4.14.192",
+    "@types/lodash": "4.14.194",
     "coveralls": "3.1.1",
     "documentation": "14.0.1",
     "eslint": "8.38.0",
