@@ -36,7 +36,7 @@
     "@babel/core": "7.21.8",
     "@babel/preset-env": "7.21.5",
     "@babel/preset-typescript": "7.21.5",
-    "@tsconfig/node14": "1.0.3",
+    "@tsconfig/node16": "1.0.3",
     "@types/lodash": "4.14.194",
     "coveralls": "3.1.1",
     "documentation": "14.0.1",
@@ -56,6 +56,6 @@
   },
   "license": "ISC",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   }
 }
