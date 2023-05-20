@@ -3633,10 +3633,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-documentation@14.0.1:
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/documentation/-/documentation-14.0.1.tgz#2d7819eeecd854d782b58b16ad7967d9bda960f5"
-  integrity sha512-Y/brACCE3sNnDJPFiWlhXrqGY+NelLYVZShLGse5bT1KdohP4JkPf5T2KNq1YWhIEbDYl/1tebRLC0WYbPQxVw==
+documentation@14.0.2:
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/documentation/-/documentation-14.0.2.tgz#d8c379ba08835953ba5c3b9bd5f9db66a62e66a3"
+  integrity sha512-hWoTf8/u4pOjib02L7w94hwmhPfcSwyJNGtlPdGVe8GFyq8HkzcFzQQltaaikKunHEp0YSwDAbwBAO7nxrWIfA==
   dependencies:
     "@babel/core" "^7.18.10"
     "@babel/generator" "^7.18.10"
