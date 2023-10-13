@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@babel/cli": "7.23.0",
-    "@babel/core": "7.23.0",
-    "@babel/preset-env": "7.22.20",
-    "@babel/preset-typescript": "7.23.0",
+    "@babel/core": "7.23.2",
+    "@babel/preset-env": "7.23.2",
+    "@babel/preset-typescript": "7.23.2",
     "@tsconfig/node16": "16.1.1",
     "@types/lodash": "4.14.199",
     "coveralls": "3.1.1",
