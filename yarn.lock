@@ -2367,10 +2367,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/quickjs-emscripten/-/quickjs-emscripten-0.23.0.tgz#db4ecfd499a9765ab24002c3b696d02e6d32a12c"
   integrity sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==
 
-"@tsconfig/node16@16.1.1":
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-16.1.1.tgz#b9322bcacf7b7a487ab4e078f88455bde47f3780"
-  integrity sha512-+pio93ejHN4nINX4pXqfnR/fPLRtJBaT4ORaa5RH0Oc1zoYmo2B2koG+M328CQhHKn1Wj6FcOxCDFXAot9NhvA==
+"@tsconfig/node16@16.1.2":
+  version "16.1.2"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-16.1.2.tgz#64d05dbb6d693e9503babcae256bf380c8773b09"
+  integrity sha512-dQ4IMJsdighPkzI8YNdjZy9Ky2ZAj1m2EkCUfQ575djffboaVJrkl5RmHmmc4MEF7LXVv501aO8KeG5Aa43VHA==
 
 "@types/babel__core@^7.1.14":
   version "7.1.14"
