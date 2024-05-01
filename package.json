@@ -32,9 +32,9 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@babel/cli": "7.24.1",
-    "@babel/core": "7.24.4",
-    "@babel/preset-env": "7.24.4",
+    "@babel/cli": "7.24.5",
+    "@babel/core": "7.24.5",
+    "@babel/preset-env": "7.24.5",
     "@babel/preset-typescript": "7.24.1",
     "@tsconfig/node18": "18.2.4",
     "@types/lodash": "4.17.0",
