@@ -6,7 +6,7 @@
 
 # pptr-mock-server
 
-Tiny library for backendless testing using [Puppeteer](https://pptr.dev/).
+Mocking server responses using [Puppeteer](https://pptr.dev/).
 
 ### Intro
 
@@ -19,12 +19,12 @@ modify any window APIs like `XMLHttpRequest`. This provides great flexibility
 and performance when handling requests, since it operates on browser internal
 level.
 
-Recommended reading: [Automated UI Testing at Dock](https://ermakovich.ru/posts/automated-ui-testing-at-dock/).
+Related reading: [Automated UI Testing at Dock](https://ermakovich.ru/posts/automated-ui-testing-at-dock/).
 
 ### Installing
 
 ```
-yarn add -D pptr-mock-server
+npm install pptr-mock-server
 ```
 
 ### Setting up
@@ -45,7 +45,7 @@ const mockRequest = await mockServer.init(page, {
 
 ### Basic usage
 
-Once you have an instance of [MockRequest](docs/api.md#mockrequest) you can pass it to your tests for registering mock responses:
+Once you have an instance of a [MockRequest](docs/api.md#mockrequest) you can pass it to your tests for registering mock responses:
 
 ```JavaScript
 const responseConfig = { body: { result: 'ok' } }

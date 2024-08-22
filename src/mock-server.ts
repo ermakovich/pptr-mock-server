@@ -10,7 +10,7 @@ import MockRequest from './mock-request'
 export default class MockServer {
   /**
    * Init mock server and set request interception on the page
-   * @param {Page} page Puppeteer's page
+   * @param {Page} page Puppeteer's page object
    * @param {InitOptions} options init options
    * @return {Promise<MockRequest>}
    */

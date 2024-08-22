@@ -19,11 +19,11 @@ export default class MockRequest {
 
   /**
    * Set expected mock response for request. There are also shortcuts `.get()`,
-   * `.post()`, `.put()`, `.delete()` and '.patch()` available
+   * `.post()`, `.put()`, `.delete()` and `.patch()` available
    * @method
    * @param {string} method request HTTP method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
@@ -45,7 +45,7 @@ export default class MockRequest {
    * Shortcut for `.on('get', ...)`
    * @method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
@@ -57,7 +57,7 @@ export default class MockRequest {
    * Shortcut for `.on('post', ...)`
    * @method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
@@ -73,7 +73,7 @@ export default class MockRequest {
    * Shortcut for `.on('put', ...)`
    * @method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
@@ -85,7 +85,7 @@ export default class MockRequest {
    * Shortcut for `.on('delete', ...)`
    * @method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
@@ -101,7 +101,7 @@ export default class MockRequest {
    * Shortcut for `.on('patch', ...)`
    * @method
    * @param {string} endpoint request endpoint URL. If relative URL is passed,
-   * it's considered as a request to api **relative** to baseApiUrl.
+   * it's considered as a request to api **relative** to `baseApiUrl`
    * @param {number} status response status code
    * @param {ResponseOptions} [options] additional response options
    * @return {MockRequest}
