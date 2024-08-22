@@ -45,7 +45,7 @@ const mockRequest = await mockServer.init(page, {
 
 ### Basic usage
 
-Once you have an instance of [MockRequest](api.md#mockrequest) you can pass it to your tests for registering mock responses:
+Once you have an instance of [MockRequest](docs/api.md#mockrequest) you can pass it to your tests for registering mock responses:
 
 ```JavaScript
 const responseConfig = { body: { result: 'ok' } }
