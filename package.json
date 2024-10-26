@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@babel/cli": "7.25.9",
-    "@babel/core": "7.25.9",
-    "@babel/preset-env": "7.25.9",
-    "@babel/preset-typescript": "7.25.9",
+    "@babel/core": "7.26.0",
+    "@babel/preset-env": "7.26.0",
+    "@babel/preset-typescript": "7.26.0",
     "@eslint/compat": "1.2.1",
     "@tsconfig/node18": "18.2.4",
     "@types/lodash": "4.17.12",
