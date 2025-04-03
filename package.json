@@ -36,7 +36,7 @@
     "@babel/core": "7.26.10",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-typescript": "7.27.0",
-    "@eslint/compat": "1.2.7",
+    "@eslint/compat": "1.2.8",
     "@tsconfig/node18": "18.2.4",
     "@types/lodash": "4.17.16",
     "coveralls": "3.1.1",
