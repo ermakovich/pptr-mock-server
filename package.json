@@ -57,7 +57,7 @@
   },
   "license": "ISC",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "yarn@1.22.22"
 }
