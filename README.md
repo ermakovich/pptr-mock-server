@@ -15,7 +15,7 @@ Puppeteer.
 
 Internally it works purely via Puppeteer API using built-in
 `setRequestInterception` mechanism. It doesn't set up any servers and doesn't
-modify any window APIs like `XMLHttpRequest`. This provides great flexibility
+modify any window APIs like `XMLHttpRequest` or `fetch`. This provides great flexibility
 and performance when handling requests, since it operates on browser internal
 level.
 
