@@ -2491,10 +2491,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/quickjs-emscripten/-/quickjs-emscripten-0.23.0.tgz#db4ecfd499a9765ab24002c3b696d02e6d32a12c"
   integrity sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==
 
-"@tsconfig/node18@18.2.4":
-  version "18.2.4"
-  resolved "https://registry.yarnpkg.com/@tsconfig/node18/-/node18-18.2.4.tgz#094efbdd70f697d37c09f34067bf41bc4a828ae3"
-  integrity sha512-5xxU8vVs9/FNcvm3gE07fPbn9tl6tqGGWA9tSlwsUEkBxtRnTsNmwrV8gasZ9F/EobaSv9+nu8AxUKccw77JpQ==
+"@tsconfig/node18@18.2.5":
+  version "18.2.5"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node18/-/node18-18.2.5.tgz#8aab6401f9e42b81325dd6456949f8c200b50f65"
+  integrity sha512-nQicUR0hKCXwCTVByBMPKm+lWH4B+IquC9Y1KEe4oujGVFFKGTIpAFz5z/AwJooSocVAuTSWTe/7ey1nU+xrlA==
 
 "@tybys/wasm-util@^0.9.0":
   version "0.9.0"
