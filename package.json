@@ -37,7 +37,7 @@
     "@babel/preset-env": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
     "@eslint/compat": "2.0.0",
-    "@tsconfig/node22": "22.0.0",
+    "@tsconfig/node22": "22.0.5",
     "@types/lodash": "4.17.21",
     "documentation": "14.0.3",
     "eslint": "9.39.2",
