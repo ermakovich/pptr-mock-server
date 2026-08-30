@@ -8,10 +8,9 @@
     "build": "tsc && babel ./dist --out-dir ./dist",
     "prepublish": "npm run build",
     "test": "jest",
-    "test-ci": "jest --ci --runInBand --reporters=jest-junit",
+    "test-ci": "jest --ci --runInBand",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "lint-ci": "eslint . --format junit -o reports/junit/lint-results.xml",
     "docs": "documentation build src/index.ts -f md -o docs/api.md"
   },
   "repository": {
