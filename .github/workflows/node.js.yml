@@ -24,18 +24,18 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
-          yarn --frozen-lockfile
+          npm ci
 
       - name: Install Chrome for Testing
         run: npx puppeteer browsers install chrome
 
       - name: Build & test
         run: |
-          yarn build
-          yarn docs
-          yarn test-ci
-          yarn lint
+          npm run build
+          npm run docs
+          npm run test-ci
+          npm run lint
