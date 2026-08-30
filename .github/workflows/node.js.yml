@@ -25,8 +25,26 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-      - run: |
+
+      - name: Cache Puppeteer Binary
+        id: puppeteer-cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-puppeteer-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-puppeteer-
+
+      - name: Install dependencies
+        run: |
           yarn --frozen-lockfile
+
+      - name: Install Chrome for Testing
+        if: steps.puppeteer-cache.outputs.cache-hit != 'true'
+        run: npx puppeteer browsers install chrome
+
+      - name: Build & test
+        run: |
           yarn build
           yarn docs
           yarn test-ci
